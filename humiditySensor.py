@@ -10,10 +10,10 @@ DHT_PIN = 4
 def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
     if not os.path.exists(file_name):
-	with open(file_name, "w") as f:
-	   f.write(list_of_elem)
-    else: 
-	with open(file_name, 'a+', newline='') as write_obj:
+        with open(file_name, "w") as f:
+            f.write(list_of_elem)
+    else:
+        with open(file_name, 'a+', newline='') as write_obj:
             csv_writer = writer(write_obj)
             csv_writer.writerow(list_of_elem)
 
