@@ -1,16 +1,21 @@
+import os
 from csv import writer
 import Adafruit_DHT
 import time
-import datetime.datetime
+from datetime import datetime
 
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
 def append_list_as_row(file_name, list_of_elem):
     # Open file in append mode
-    with open(file_name, 'a+', newline='') as write_obj:
-        csv_writer = writer(write_obj)
-        csv_writer.writerow(list_of_elem)
+    if not os.path.exists(file_name):
+	with open(file_name, "w") as f:
+	   f.write(list_of_elem)
+    else: 
+	with open(file_name, 'a+', newline='') as write_obj:
+            csv_writer = writer(write_obj)
+            csv_writer.writerow(list_of_elem)
 
 
 while True:
