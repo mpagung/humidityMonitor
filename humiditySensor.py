@@ -25,7 +25,7 @@ while True:
     humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
     if humidity is not None and temperature is not None:
         timenow=datetime.now()
-        datapoint={"datetime":timenow,"temperature":temperature,"humidity":humidity
+        datapoint={"datetime":timenow,"temperature":temperature,"humidity":humidity}
         append_list_as_row("test.csv",datapoint,keys)
         print(timenow,data)
     else:
