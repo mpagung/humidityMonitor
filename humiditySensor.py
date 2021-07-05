@@ -13,7 +13,7 @@ def append_list_as_row(file_name, data,keys):
         with open(file_name, "w") as f:
             writer = csv.DictWriter(f,fieldnames=keys)
             writer.writeheader()
-            writer.writerows(data)
+            writer.writerow(data)
     else:
         with open(file_name, 'a+', newline='') as write_obj:
             csv_writer = csv.writer(write_obj)
@@ -27,7 +27,7 @@ while True:
         timenow=datetime.now()
         datapoint={"datetime":timenow,"temperature":temperature,"humidity":humidity}
         append_list_as_row("test.csv",datapoint,keys)
-        print(timenow,data)
+        print(datapoint)
     else:
         print("Sensore failure, Check wiring.");
     time.sleep(5);
