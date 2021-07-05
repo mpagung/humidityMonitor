@@ -15,9 +15,9 @@ def append_list_as_row(file_name, data,keys):
             writer.writeheader()
             writer.writerow(data)
     else:
-        with open(file_name, 'a+', newline='') as write_obj:
-            csv_writer = csv.writer(write_obj)
-            csv_writer.writerow(data)
+        with open(file_name, 'a+', newline='') as f:
+            writer = csv.DictWriter(f,fieldnames=keys)
+            writer.writerow(data)
 
 
 keys=["datetime","temperature","humidity"]
@@ -26,7 +26,7 @@ while True:
     if humidity is not None and temperature is not None:
         timenow=datetime.now()
         datapoint={"datetime":timenow,"temperature":temperature,"humidity":humidity}
-        append_list_as_row("test.csv",datapoint,keys)
+        append_list_as_row("../data/test.csv",datapoint,keys)
         print(datapoint)
     else:
         print("Sensore failure, Check wiring.");
