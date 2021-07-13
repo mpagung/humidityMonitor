@@ -22,12 +22,13 @@ def append_list_as_row(file_path, data,keys):
 
 
 keys=["datetime","temperature","humidity"]
+filepath="/home/pi/humidityMonitor/data"
 while True:
     humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
     if humidity is not None and temperature is not None:
         timenow=datetime.now()
         datapoint={"datetime":timenow,"temperature":temperature,"humidity":humidity}
-        append_list_as_row("/home/pi/humidityMonitor/data",datapoint,keys)
+        append_list_as_row(filepath,datapoint,keys)
         print("time: ",datapoint["datetime"].strftime("%H:%M:%S"),", Temp ",temperature, ", humidity:", humidity)
     else:
         print("Sensore failure, Check wiring.");
