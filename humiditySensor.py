@@ -27,8 +27,8 @@ while True:
     if humidity is not None and temperature is not None:
         timenow=datetime.now()
         datapoint={"datetime":timenow,"temperature":temperature,"humidity":humidity}
-        append_list_as_row("../data",datapoint,keys)
-        print(datapoint)
+        append_list_as_row("/home/pi/humidityMonitor/data",datapoint,keys)
+        print("time: ",datapoint["datetime"].strftime("%H:%M:%S"),", Temp ",temperature, ", humidity:", humidity)
     else:
         print("Sensore failure, Check wiring.");
-    time.sleep(5);
+    time.sleep(60);
