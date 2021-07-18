@@ -7,6 +7,8 @@ from datetime import datetime
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
+#Function: continuously read sensor and insert datapoint to csv file
+
 def append_list_as_row(file_path, data,keys):
     # Open file in append mode
     file_name=os.path.join(file_path,data["datetime"].strftime("%m%d%Y")+".csv")

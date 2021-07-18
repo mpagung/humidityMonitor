@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 import json
+from mongoconnect import mongoconnect 
 
 ### initial params
 # keys=["datetime","temperature","humidity"]
@@ -10,15 +11,8 @@ import json
 #file_name=os.path.join(file_path,data["datetime"].strftime("%m%d%Y")+".csv")
 #filepath="./" #for windows testing
 
-load_dotenv("./.env")
-mongoCredentials = os.getenv("MONGO_CLIENT")
-print(mongoCredentials)
-
 #Connection to mongoose
-client = MongoClient(mongoCredentials)
-database = client["HumidityProto"]
-collection = database['Reading']
-
+collection=mongoconnect("./.env")
 
 
 file_name ="../humData/07102021.csv"
