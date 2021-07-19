@@ -23,7 +23,7 @@ def append_list_as_row(file_path, data,keys):
             writer.writerow(data)
 
 
-keys=["datetime","temperature","humidity"]
+keys=["date","time","temperature","humidity"]
 filepath="/home/pi/humidityMonitor/data"
 while True:
     humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
