@@ -11,7 +11,7 @@ DHT_PIN = 4
 
 def append_list_as_row(file_path, data,keys):
     # Open file in append mode
-    file_name=os.path.join(file_path,data["datetime"].strftime("%m%d%Y")+".csv")
+    file_name=os.path.join(file_path,"b"+data["datetime"].strftime("%m%d%Y")+".csv")
     if not os.path.exists(file_name):
         with open(file_name, "w") as f:
             writer = csv.DictWriter(f,fieldnames=keys)
@@ -29,7 +29,7 @@ while True:
     humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
     if humidity is not None and temperature is not None:
         timenow=datetime.now()
-        datapoint={"datetime":timenow,"temperature":temperature,"humidity":humidity}
+        datapoint={"date":timenow.strftime("%m/%d/%Y"),"time":timenow.strftime("%H:%M:%S.%f"),"temperature":temperature,"humidity":humidity}
         append_list_as_row(filepath,datapoint,keys)
         print("time: ",datapoint["datetime"].strftime("%H:%M:%S"),", Temp ",temperature, ", humidity:", humidity)
     else:
