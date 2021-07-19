@@ -11,7 +11,7 @@ DHT_PIN = 4
 
 def append_list_as_row(file_path, data,keys):
     # Open file in append mode
-    file_name=os.path.join(file_path,"b"+data["datetime"].strftime("%m%d%Y")+".csv")
+    file_name=os.path.join(file_path,"b"+datetime.strptime(data["date"],"%m/%d/%Y").strftime("%m%d%Y")+".csv")
     if not os.path.exists(file_name):
         with open(file_name, "w") as f:
             writer = csv.DictWriter(f,fieldnames=keys)
