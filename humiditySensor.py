@@ -31,7 +31,7 @@ while True:
         timenow=datetime.now()
         datapoint={"date":timenow.strftime("%m/%d/%Y"),"time":timenow.strftime("%H:%M:%S.%f"),"temperature":temperature,"humidity":humidity}
         append_list_as_row(filepath,datapoint,keys)
-        print("time: ",datetime.strptime(data["date"],"%m/%d/%Y").strftime("%H:%M:%S"),", Temp ",temperature, ", humidity:", humidity)
+        print("time: ",datetime.strptime(datapoint["date"],"%m/%d/%Y").strftime("%H:%M:%S"),", Temp ",temperature, ", humidity:", humidity)
     else:
         print("Sensore failure, Check wiring.");
     time.sleep(60);
